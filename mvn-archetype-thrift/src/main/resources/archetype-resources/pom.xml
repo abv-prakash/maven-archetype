@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ========================================================================== -->
+	<!-- POM PARENT DEFINITIONS -->
+	<!-- ========================================================================== -->
+	<parent>
+		<groupId>com.softmentor</groupId>
+		<artifactId>master-pom</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<!-- ========================================================================== -->
+	<!-- THIS POM ARTIFACT DEFINITIONS -->
+	<!-- ========================================================================== -->
+	<groupId>\${groupId}</groupId>
+	<artifactId>\${artifactId}-parent</artifactId>
+	<version>\${version}</version>
+	<packaging>pom</packaging>
+
+	<name>\${artifactId} :: Parent</name>
+	#if( $description != "null" )
+	<description>\${description}</description>
+	#end
+
+	<!-- ========================================================================== -->
+	<!-- THIS POM PROJECT REPOSITORIES -->
+	<!-- ========================================================================== -->
+
+
+	<!-- ========================================================================== -->
+	<!-- THIS POM PROJECT RELEASE, CI SETTINGS - SCM,ISSUESMGT,DISTMGMT... -->
+	<!-- ========================================================================== -->
+
+	<!-- <distributionManagement> <site> <id>iat.site</id> | make it overridible, 
+		FTP is terribly slow when launched from Maven Wagon | an alternative strategy 
+		could be deploying the site locally | | -Dsite.deploymentUrl=file://... | 
+		| then async redeploying it via Filezilla/whatelese <url>${site.deploymentUrl}</url> 
+		</site> </distributionManagement> -->
+
+	<!-- ========================================================================== -->
+	<!-- THIS POM PROJECT VARIABLES -->
+	<!-- ========================================================================== -->
+	<properties>
+		<findbugs.onlyAnalyze>com.softmentor.*</findbugs.onlyAnalyze>
+		<plugin.checkstyle.failOnError>false</plugin.checkstyle.failOnError>
+
+		<!-- guice dependency injection -->
+		<guice.version>3.0</guice.version>
+		<guava.version>15.0</guava.version>
+
+		<!-- metrics instrumentation -->
+		<metrics.version>3.0.1</metrics.version>
+
+		<!-- loggers -->
+		<slf4j.version>1.7.5</slf4j.version>
+		<log4j.version>1.2.16</log4j.version>
+		<logback.version>1.0.13</logback.version>
+
+		<!-- unit test dependencies version -->
+		<junit.version>4.11</junit.version>
+		<testng.version>6.8.7</testng.version>
+		<hamcrest.version>1.3</hamcrest.version>
+		<mockito.version>1.9.0</mockito.version>
+
+		<!-- lombok provided deps version -->
+		<lombok.version>0.12.0</lombok.version>
+
+	</properties>
+
+	<!-- ========================================================================== -->
+	<!-- SUB MODULE DEFINITIONS -->
+	<!-- ========================================================================== -->
+	<modules>
+		<!-- <module>${rootArtifactId}-core</module> -->
+		<module>example-idl</module>
+	</modules>
+
+	<!-- ========================================================================== -->
+	<!-- THIS POM PROJECT DEPENDENCIES -->
+	<!-- ========================================================================== -->
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>${guice.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+			<!-- Logger dependencies -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<artifactId>logback-classic</artifactId>
+				<groupId>ch.qos.logback</groupId>
+				<version>${logback.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<artifactId>logback-core</artifactId>
+				<groupId>ch.qos.logback</groupId>
+				<version>${logback.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- | Provided dependencies -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Unit Testing dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+			</dependency> -->
+
+		<!-- <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
+			</dependency> -->
+		<dependency>
+			<artifactId>logback-core</artifactId>
+			<groupId>ch.qos.logback</groupId>
+		</dependency>
+		<dependency>
+			<artifactId>logback-classic</artifactId>
+			<groupId>ch.qos.logback</groupId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- ========================================================================== -->
+	<!-- THIS POM PROJECT PROFILES -->
+	<!-- ========================================================================== -->
+</project>

@@ -1,0 +1,34 @@
+
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set(
+$symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2010-2012 InMobi @TODO: Get correct license text. -->
+
+<!-- @version: ${symbol_dollar}Id${symbol_dollar} -->
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/plugins/maven-changes-plugin/xsd/changes-1.0.0.xsd">
+
+	<properties>
+		<author>The InMobi GPM Team</author>
+		<title>Changes</title>
+	</properties>
+
+	<body>
+
+		<release version="${version}" date="2012-06-25" description="${version} release">
+			<action dev="jiny.thattil" type="fix" issue="104">
+				Fix that, this etc - code fix revs - .
+			</action>
+			<action dev="jiny.thattil" type="update">
+				Updated gpm thrift 0.8 compatible idls.
+			</action>
+			<action dev="jiny.thattil" type="add">
+				Add gpm thrift 0.8 compatible idls.
+			</action>
+		</release>
+	</body>
+
+</document>
